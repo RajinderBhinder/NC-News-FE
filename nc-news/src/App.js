@@ -7,17 +7,17 @@ import Articles from './Components/Articles';
 import * as api from './Assets/api';
 import Article from './Components/Article';
 import User from './Components/User';
+import Login from './Components/Login'
 
 
 class App extends Component {
   state = {
     topics: [],
-    
-
+    user: {}
   }
   render() {
 
-    // const articlePath = this.state.topic.length? '/api/topics/:topic/articles' : '/api/articles';
+    console.log(this.state.user)
     
     return (
       <div className="App">
@@ -28,7 +28,7 @@ class App extends Component {
           <Topics topics={this.state.topics} setArticles={this.setArticles} />
           <Sort />
           <input type = "text" ></input>
-          <button>Login</button>
+          <button> <Link to='/login'>Login </Link> </button>
         </nav>
         <section className="left"></section>
         <section className="right"></section>
@@ -36,18 +36,18 @@ class App extends Component {
 
         <Router>
 
-          <Articles path='/' articles={this.state.articles}/> 
+          <Articles path='/' user={this.state.user} articles={this.state.articles}/> 
           <Articles path='/articles' articles={this.state.articles}/> 
           <Articles path='/topics/:topic' articles={this.state.articles}/> 
           <Article path='/article/:id' />
-          <User path='/username' />
+          <Login path='/login' setUser={this.setUser} />
+          <User path='/username' user={this.state.user} />
 
         </Router>
 
       </div>
     );
   }
-
 
 
   
@@ -60,6 +60,10 @@ class App extends Component {
       this.setState({topics})
     })
     .catch(console.log) //add error handler
+  }
+
+  setUser = (user) => {
+     this.setState({user})
   }
 
   

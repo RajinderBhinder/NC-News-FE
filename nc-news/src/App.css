@@ -22,8 +22,8 @@ header {
   font-size: 70px;
   background-color: #96858f;
   /* background-image: url('./Assets/news-19-broadcast-tv-studio-green-screen-background-loopable_hjgiuhleyx_thumbnail-full01.png'); */
-  background-repeat: no-repeat;
-  background-size: 1400px 160px;
+  /* background-repeat: no-repeat;
+  background-size: 1400px 160px; */
   text-shadow: 2px 7px  #6d7993;
   font-weight: bold;
   padding-top: 70px;
@@ -58,6 +58,7 @@ input {
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 20px;
+  
 }
 
 section {
@@ -180,4 +181,33 @@ p {
   padding-left: 10px;
   padding-right: 10px;
   
+}
+
+form {
+  padding-top: 80px;
+  background-color: #d5d5d5;
+  height: 100vh;
+}
+
+form label {
+    padding: 30px;
+    font-size: 30px;
+}
+
+form input {
+  
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+}
+
+form h1 {
+  padding: 40px;
+}
+
+form button {
+  margin-top: 40px;
+  width: 150px;
+  height: 30px;
+  background-color: #96858f;
 }
