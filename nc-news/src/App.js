@@ -13,6 +13,7 @@ import LeftSection from './Components/LeftSection';
 import AddArticle from './Components/AddArticle';
 import AddComment from './Components/AddComment';
 import Comments from './Components/Comments';
+import NotFound from './Components/NotFound';
 
 
 class App extends Component {
@@ -47,10 +48,11 @@ class App extends Component {
           <Articles path='/topics/:topic' user={this.state.user} articles={this.state.articles}/> 
           <Article path='/article/:article_id' user={this.state.user}/>
           <Login path='/login' setUser={this.setUser} />
-          <User path='/username' user={this.state.user} />
+          <User path='users/:username' user={this.state.user} />
           <AddArticle path='/addArticle' topics={this.state.topics} user={this.state.user} />
           <AddComment path='/article/comment' />
           <Comments path='article/:id/comments' />
+          <NotFound default />
 
         </Router>
 

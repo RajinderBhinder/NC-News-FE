@@ -298,3 +298,11 @@ p {
   z-index: 2;
 
 } */
+
+.oops {
+  margin-left: 100px;
+  align-self: center;
+  width: 800px;
+  height: 600px;
+  background-image: url('./Assets/oops.jpg');
+}

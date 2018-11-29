@@ -22,8 +22,8 @@ class Article extends Component {
 
                         </div>
                         <h4 className='author'>
-                            <Link to={`/${article.created_by.username}`} >
-                              - {article.created_by.username}
+                            <Link to={`/users/${article.created_by.username}`} articleuser={article.created_by}>
+                              - {article.created_by.name}
                             </Link>
                         </h4>
                         <div className='bar'>

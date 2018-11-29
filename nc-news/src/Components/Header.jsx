@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 
 
@@ -11,7 +12,7 @@ const Header = ({user}) => {
                 
             </header>
             <div>
-                {user.avatar_url && <img src={user.avatar_url } /> }
+                {user.avatar_url && <Link to={`/users/${user.username}`}> <img src={user.avatar_url } /> </Link>}
             </div>
 
          </div>
