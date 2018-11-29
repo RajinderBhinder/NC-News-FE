@@ -50,7 +50,10 @@ class Article extends Component {
                                 Like
                             </button>
 
-                            
+                            {this.props.user._id === article.created_by._id && 
+                                <button onClick={this.handleDeleteArticle}>
+                                   Delete
+                                </button>}
                         </div>
 
                     </article>
@@ -80,6 +83,12 @@ class Article extends Component {
                    this.setState({articles})
                 })
                 .catch(console.log) //add error handler
+    }
+
+    handleDeleteArticle = (event) => {
+        event.preventDefault();
+        
+
     }
     
 }

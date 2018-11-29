@@ -12,7 +12,7 @@ class Comments extends Component {
         return (
 
             <div> 
-                {this.props.user._id && <AddComment user={this.props.user} article_id={this.props.id} /> }
+                {this.props.user._id && <AddComment updateComments={this.updateComments} user={this.props.user} article_id={this.props.id} /> }
                 {this.state.comments.map((comment) => 
                    <div className='commentsForArticle' key={comment._id} > 
                          <div>
@@ -41,6 +41,14 @@ class Comments extends Component {
                this.setState({comments})
            })
 
+    }
+
+    
+
+    updateComments = (comment) => {
+         this.setState({
+             comments: [comment, ...this.state.comments]
+         })
     }
 }
 

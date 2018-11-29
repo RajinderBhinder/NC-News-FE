@@ -45,7 +45,7 @@ class AddComment extends Component {
         
         api.addComment(newComment, article_id)
             .then(comment => {
-                navigate(`/article/${this.props.article_id}`)
+                this.props.updateComments(comment)
                 this.setState({
                     body: ''
                 })
