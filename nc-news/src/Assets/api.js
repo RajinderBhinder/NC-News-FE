@@ -46,13 +46,19 @@ export const getTopics = async () => {
  }
 
  export const addArticle = async (newArticle, topic) => {
-     
+
      const {data} = await axios.post(`${baseURL}/topics/${topic}/articles`, newArticle)
      return data.article;
  }
 
  export const addComment = async (newComment, article_id) => {
-     
+
     const {data} = await axios.post(`${baseURL}/articles/${article_id}/comments`, newComment)
     return data.comment;
-}
+ }
+
+ export const deleteComment = async(comment_id) => {
+     
+    const {data} = await axios.delete(`${baseURL}/comments/${comment_id}`)
+    return data;
+ }

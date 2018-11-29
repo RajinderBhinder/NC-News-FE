@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import  AddComment from './AddComment';
 
@@ -8,6 +8,8 @@ class Comments extends Component {
         
     }
     render() {
+
+        
         
         return (
 
@@ -19,13 +21,28 @@ class Comments extends Component {
                              {comment.body}
                          </div>
 
-                         <div>
-                             {comment.created_at.slice(0, 10)}
-                         </div>
 
-                         <div>
-                             {comment.created_by.name}
-                         </div>
+                         <div className='bar'>
+                            <div>
+                                {comment.created_by.name}
+                            </div>
+                            
+                            <label > <bold>--</bold> {comment.votes}  Votes <bold>--</bold> </label>
+
+                            <button onClick={this.handleClick} >
+                                Like
+                            </button>
+
+                            <button> {comment.created_at.slice(0, 9)}</button>
+
+                            {this.props.user._id === comment.created_by._id && 
+                                <button onClick={(event) => this.handleDeleteComment(event, comment._id)}>
+                                   Delete
+                                </button>}
+
+
+
+                        </div>
 
                          
                     </div> 
@@ -43,6 +60,13 @@ class Comments extends Component {
 
     }
 
+    componentDidUpdate(prevProps, prevState, ) {
+        
+        if (prevState.comments.length !== this.state.comments.length) {
+            
+        }
+    }
+
     
 
     updateComments = (comment) => {
@@ -50,10 +74,23 @@ class Comments extends Component {
              comments: [comment, ...this.state.comments]
          })
     }
+    
+
+    handleDeleteComment = (event, comment_id) => {
+        event.preventDefault();
+        api.deleteComment(comment_id)
+            .then((res, comment_id) => {
+                this.setState({
+                    comments : [...this.state.comments.filter(comment => comment._id !== comment_id)]
+                })
+            })
+            .catch(console.log)
+
+    }
+
+    
 }
 
-Comments.propTypes = {
 
-};
 
 export default Comments;

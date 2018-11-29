@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, {  Component } from 'react';
 import { Link } from '@reach/router'
 
 class Topics extends Component {
@@ -23,8 +23,6 @@ class Topics extends Component {
     
 };
 
-Topics.propTypes = {
-    
-};
+
 
 export default Topics;
