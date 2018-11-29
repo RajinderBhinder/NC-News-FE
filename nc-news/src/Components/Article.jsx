@@ -19,8 +19,7 @@ class Article extends Component {
                     <p >{article.body}</p>
                 </article>
                 <div className='comment-like'> Comments</div>
-                {this.props.user._id && <AddComment user={this.props.user} article_id={this.state.article._id} /> }
-                <Comments id={this.props.id} />
+                <Comments id={this.props.article_id} user={this.props.user} />
 
             </div>
                 
@@ -29,7 +28,7 @@ class Article extends Component {
 
     componentDidMount() {
         
-         api.getArticleById(this.props.id)
+         api.getArticleById(this.props.article_id)
             .then((article) => {
                 this.setState({article})
             })

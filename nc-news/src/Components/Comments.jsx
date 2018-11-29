@@ -1,15 +1,18 @@
 import React, { Component, PropTypes } from 'react';
-import * as api from '../Assets/api'
+import * as api from '../Assets/api';
+import  AddComment from './AddComment';
 
 class Comments extends Component {
     state = {
         comments: []
+        
     }
     render() {
-        console.log(this.state.comments)
+        
         return (
 
             <div> 
+                {this.props.user._id && <AddComment user={this.props.user} article_id={this.props.id} /> }
                 {this.state.comments.map((comment) => 
                    <div className='commentsForArticle' key={comment._id} > 
                          <div>
@@ -24,9 +27,7 @@ class Comments extends Component {
                              {comment.created_by.name}
                          </div>
 
-                         {/* 
-
-                          */}
+                         
                     </div> 
                     )}
             </div>

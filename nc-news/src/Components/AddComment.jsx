@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import * as api from '../Assets/api'
+import React, { Component } from 'react';
+import * as api from '../Assets/api';
+import { navigate } from '@reach/router';
 
 class AddComment extends Component {
 
@@ -9,11 +10,13 @@ class AddComment extends Component {
 
     }
     render() {
+
+        
         return (
             <div className='addComment'>    
                 <form onSubmit={this.handleSubmit} >
                     <div className='typebox' >
-                        <input onChange={this.handleChange} type='text' /> <br/>
+                        <input onChange={this.handleChange} value={this.state.body} type='text' /> <br/>
                         <button>Comment</button>
                     </div>
                 </form>
@@ -38,11 +41,18 @@ class AddComment extends Component {
             body,
             created_by
         }
+
+        
         api.addComment(newComment, article_id)
-            .then(article => {
-                navigate(`/article/${article._id}`)
+            .then(comment => {
+                navigate(`/article/${this.props.article_id}`)
+                this.setState({
+                    body: ''
+                })
             })
             .catch(err => console.log(err, 'err'))
+
+
 
     }
 }

@@ -42,13 +42,15 @@ class Article extends Component {
                         </div>
 
                         <div className='comment-like'>
-                            <button><Link to='/article/'>
+                            <button><Link to={`/article/${article._id}`}>
                                 Comment
                             </Link></button>
                             
-                            <button>
+                            <button className='vote'>
                                 Like
                             </button>
+
+                            
                         </div>
 
                     </article>
