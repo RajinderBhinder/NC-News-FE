@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import Comments from './Comments';
+import AddComment from './AddComment';
 
 class Article extends Component {
     state = {
@@ -18,6 +19,7 @@ class Article extends Component {
                     <p >{article.body}</p>
                 </article>
                 <div className='comment-like'> Comments</div>
+                {this.props.user._id && <AddComment user={this.props.user} article_id={this.state.article._id} /> }
                 <Comments id={this.props.id} />
 
             </div>

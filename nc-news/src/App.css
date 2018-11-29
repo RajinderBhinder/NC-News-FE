@@ -12,23 +12,41 @@
 
 }
 
-header {
+.header {
   
   grid-area: header;
   color: white;
   height: 160px;
-  
-  vertical-align: baseline;
   font-size: 70px;
   background-color: #96858f;
   /* background-image: url('./Assets/news-19-broadcast-tv-studio-green-screen-background-loopable_hjgiuhleyx_thumbnail-full01.png'); */
   /* background-repeat: no-repeat;
   background-size: 1400px 160px; */
-  text-shadow: 2px 7px  #6d7993;
+  text-shadow: 5px 5px /* #9099a2 */ #6d7993;
   font-weight: bold;
   padding-top: 70px;
-  
 }
+
+.header img {
+  position: absolute;
+  right: 60px;
+  top: 50px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  border: 3px #9099a2 solid;
+  box-shadow: 5px 5px 5px white;
+  background-image: url('./Assets/double-exposure-female-silhouette-trees-double-exposure-female-silhouette-trees-contrust-solution-man-nature-lines-111738806.jpg')
+}
+
+.o {
+  color: #6d7993;
+  text-shadow: 1px 2px 1px /* #9099a2 */ white;
+}
+
+
+
 
 nav {
   border: 1px solid white;
@@ -38,9 +56,10 @@ nav {
   flex-direction: row;
   grid-template-columns: 2fr 2fr 2fr 4fr 2fr;
   background-color: #9099a2;
+  
 }
 
-button {
+nav button {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 20px;
@@ -70,9 +89,14 @@ section {
 
 }
 
+section button {
+  width: 190px;
+  margin-top: 15px;
+  height: 30px;
+}
+
 .left {
   grid-area: left;
-  
 }
 
 .right{
@@ -163,6 +187,11 @@ a:visited {
   margin: 5px;
 }
 
+.bar div {
+  display: inline-block;
+  padding-left: 50px;
+}
+
 .comment-like {
   border: 1px #96858f solid;
   height: 30px;
@@ -183,31 +212,89 @@ p {
   
 }
 
-form {
+.login-form {
   padding-top: 80px;
   background-color: #d5d5d5;
   height: 100vh;
 }
 
-form label {
+.login-form label {
     padding: 30px;
     font-size: 30px;
 }
 
-form input {
+.login-form input {
   
   height: 40px;
   width: 200px;
   font-size: 20px;
 }
 
-form h1 {
+.login-form h1 {
   padding: 40px;
 }
 
-form button {
+.login-form button {
   margin-top: 40px;
   width: 150px;
   height: 30px;
   background-color: #96858f;
+
+  border-radius: 20px;
+  
+  font-size: 20px;
+  
+  text-shadow: 1px 1px;
+  box-shadow: 2px 1px  #96858f;
 }
+
+.addComment {
+  border: 1px black solid;
+  height: 70px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.addComment form {
+  height: 70px;
+  padding: 0;
+  border-radius: 5px;
+  
+}
+
+.addComment input {
+  margin: 1px;
+  padding: 0; 
+  height: 30px;
+  width: 1000px;
+  border-radius: 5px;
+}
+
+
+.addComment button {
+  margin-top: 2px;
+  padding: 0; 
+  height: 30px;
+  width: 100px;
+  background-color: #96858f;
+  border-radius: 20px;
+  
+}
+
+/* .typebox {
+  position: relative;
+
+}
+
+.typebox input {
+  width: 100%;
+}
+
+.typebox button {
+  position: absolute;
+  position: top right;
+  width: 10px;
+  height: 10px;
+  z-index: 2;
+
+} */

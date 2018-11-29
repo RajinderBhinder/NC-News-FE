@@ -44,3 +44,9 @@ export const getTopics = async () => {
      const {data} = await axios.get(`${baseURL}/users/${username}`)
      return data.user;
  }
+
+ export const addArticle = async (newArticle, topic) => {
+     
+     const {data} = await axios.post(`${baseURL}/topics/${topic}/articles`, newArticle)
+     return data.article;
+ }

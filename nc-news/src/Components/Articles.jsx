@@ -28,24 +28,27 @@ class Article extends Component {
                         </h4>
                         <div className='bar'>
                             <label>{article.comment_count}</label>
-                            <Link to='/article'>
+                            <button><Link to={`/article/${article._id}`}>
                                 Comments
-                            </Link >
+                            </Link > </button>
                             <label >{article.votes}</label>
-                            <Link to='/article'>
+
+                            <button >
                                 Votes
-                            </Link>
+                            </button>
+
+                            <div> {article.created_at.slice(0, 9)}</div>
 
                         </div>
 
                         <div className='comment-like'>
-                            <Link to='/article/'>
+                            <button><Link to='/article/'>
                                 Comment
-                            </Link>
+                            </Link></button>
                             
-                            <span>
+                            <button>
                                 Like
-                            </span>
+                            </button>
                         </div>
 
                     </article>
