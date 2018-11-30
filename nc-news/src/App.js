@@ -39,28 +39,33 @@ class App extends Component {
           <button> <Link to='/login'> {this.state.user._id? 'Log Out' : 'Login'} </Link> </button>
         </nav>
         
-        { this.state.user._id && <LeftSection  
-                articles={this.state.articles} 
-                user_id= {this.state.user._id}
-                setUserArticles={this.setUserArticles} /> } 
+        { this.state.user._id && <LeftSection user_id= {this.state.user._id} /> } 
         
         { !this.state.user._id && <section className="left"></section> }
+
         <section className="right"></section>
           <footer>footer</footer>
 
         <Router>
 
-          <Articles path='/' user={this.state.user} articles={this.state.articles}/> 
-          <Articles path='/articles' user={this.state.user} articles={this.state.articles}/> 
-          <Articles path='/topics/:topic' user={this.state.user} articles={this.state.articles}/> 
-          <Articles path='/user/articles' user={this.state.user}  articles={this.state.userArticles} />
+          <Articles path='/' user={this.state.user} /> 
+          <Articles path='/articles' user={this.state.user} /> 
+          <Articles path='/topics/:topic' user={this.state.user} /> 
+          <Articles path='/user/articles' user={this.state.user}   />
+          <Articles path='/articles/byUser' filterByUser={this.filterByUser} />
+
           <Article path='/article/:article_id' user={this.state.user}/>
           
           <Login path='/login' setUser={this.setUser} />
+
           <User path='users/:username' user={this.state.user} />
+
           <AddArticle path='/addArticle' topics={this.state.topics} user={this.state.user} />
+
           <AddComment path='/article/comment' />
+
           <Comments path='article/:id/comments' />
+
           <NotFound default />
 
         </Router>
@@ -69,44 +74,28 @@ class App extends Component {
     );
   }
 
-
-  
-
   componentDidMount() {
     
     if(!this.state.topics.length ) api.getTopics()
       .then((topics) => {
 
-          
-          Promise.all([topics, api.getArticles() ]) 
-              .then(([topics, articles]) => {
-                console.log(articles, 'articles')
-                this.setState({topics, articles})
-              })
-       })
+        this.setState({topics})
+      })
+      
         .catch(console.log) //add error handler
   }
 
-//   componentDidMount() {
-//     if (!this.state.articles.length )
-//      api.getArticles()
-//       .then((articles) => {
- 
-//       this.setState({articles})
-//     })
-//     .catch(console.log) //add error handler
-//  }
+  filterByUser = (articles) => {
+   return articles.reduce((acc,article) => {
+      if(article.created_by._id === this.props.user_id ) 
+         acc.push(article)
+         return acc;
+    },[])
+  }
 
   setUser = (user) => {
-     this.setState({user})
+    this.setState({user})
   }
-
-  setUserArticles = (articles) => {
-    this.setState({
-      userArticles: articles
-    })
-  }
-
   
 }
 

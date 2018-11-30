@@ -1,20 +1,34 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
 import {Link} from '@reach/router';
 import ArticlesByYou from './ArticlesByYou';
 import ProfileStrength from './ProfileStrength';
+import * as api from '../Assets/api'
 
-const LeftSection = ({articles, user_id, setUserArticles }) => {
-    return (
-        <section >
-           <button> <Link to='/addArticle'> Add a new Article </Link> </button>
-           <ArticlesByYou articles={articles} user_id= {user_id} setUserArticles={setUserArticles}/>
-           <ProfileStrength />
-        </section>
-    );
-};
+class LeftSection extends Component {
 
-LeftSection.propTypes = {
+    state = {
+        articles: []
+    }
+
+    render () {
+        return (
+            <section >
+            <button> <Link to='/addArticle'> Add a new Article </Link> </button>
+            <ArticlesByYou articles={this.state.articles} user_id= {this.props.user_id} />
+            <ProfileStrength />
+            </section>
+        );
+
+    }  
     
+    componentDidMount() {
+         api.getArticles()
+         .then(articles => {
+             this.setState({articles})
+         })
+    }
 };
+
+
 
 export default LeftSection;

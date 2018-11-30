@@ -66,5 +66,5 @@ export const getTopics = async () => {
  export const vote = async(where, id, direction ) => {
      const {data} = await axios.patch(`${baseURL}/${where}/${id}?vote=${direction}`)
      
-     return data
+     return data[where]
  }

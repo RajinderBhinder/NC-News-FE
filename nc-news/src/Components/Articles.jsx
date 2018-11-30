@@ -5,14 +5,18 @@ import * as api from '../Assets/api';
 class Articles extends Component {
 
     state = {
-        articles: this.props.articles
+        articles: []
     }
     
     render() {
 
         console.log(this.state.articles, 'from Articles')
 
-        const { articles } = this.state
+        const { articles } = this.state;
+
+        // if(this.props.filterByUser) {
+        //    articles = this.props.filterByUser(articles)
+        // }
         
         return (
 
@@ -67,7 +71,15 @@ class Articles extends Component {
 
     }
 
-    
+      componentDidMount() {
+    if (!this.state.articles.length )
+     api.getArticles()
+      .then((articles) => {
+ 
+      this.setState({articles})
+    })
+    .catch(console.log) //add error handler
+    }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.topic !== this.props.topic)

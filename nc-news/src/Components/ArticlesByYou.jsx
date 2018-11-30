@@ -1,31 +1,18 @@
 import React, {Component} from 'react';
 import Articles from './Articles';
-import {Link}  from '@reach/router'
+import {Link}  from '@reach/router';
+import * as api from '../Assets/api'
 
-class ArticlesByYou extends Component {
+const ArticlesByYou = () => {
 
-    state = {
-        userArticles: this.props.articles.reduce((acc,article) => {
-            if(article.created_by._id === this.props.user_id ) 
-               acc.push(article)
-               return acc;
-        },[])
-    }
-    render () {
     
     return (
         <div>
-            <button onClick={this.handleClick}> <Link to='/user/articles'>   Articles By You </Link> </button>
+            <button > <Link to='/articles/byUser'>   Articles By You </Link> </button>
 
         </div>
     );
 };
 
-handleClick = (event) => {
-    event.preventDefault();
-    this.props.setUserArticles(this.state.userArticles)
-
-}
-}
 
 export default ArticlesByYou;
