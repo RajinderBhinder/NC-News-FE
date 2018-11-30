@@ -306,3 +306,11 @@ p {
   height: 600px;
   background-image: url('./Assets/oops.jpg');
 }
+
+.vote {
+  background-color: white;
+}
+
+.vote-up {
+  background-color: #96858f;
+}

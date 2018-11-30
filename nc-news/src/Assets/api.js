@@ -62,3 +62,9 @@ export const getTopics = async () => {
     const {data} = await axios.delete(`${baseURL}/comments/${comment_id}`)
     return data;
  }
+
+ export const vote = async(where, id, direction ) => {
+     const {data} = await axios.patch(`${baseURL}/${where}/${id}?vote=${direction}`)
+     console.log(data)
+     return data
+ }

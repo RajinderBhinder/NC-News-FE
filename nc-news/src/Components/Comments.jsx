@@ -27,9 +27,9 @@ class Comments extends Component {
                                 {comment.created_by.name}
                             </div>
                             
-                            <label > <bold>--</bold> {comment.votes}  Votes <bold>--</bold> </label>
+                            <label > -- {comment.votes}  Votes -- </label>
 
-                            <button onClick={this.handleClick} >
+                            <button className='vote' value='up' onClick={(event) => this.handleLikeClick(event, comment._id) } >
                                 Like
                             </button>
 
@@ -88,7 +88,16 @@ class Comments extends Component {
 
     }
 
-    
+    handleLikeClick = (event, id) => {
+        event.preventDefault();
+        api.vote('comments', id, event.target.value)
+          .then(res => {
+              //change class
+          })
+
+    }
+
+
 }
 
 

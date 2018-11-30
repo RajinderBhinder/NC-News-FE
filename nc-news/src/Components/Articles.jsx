@@ -2,17 +2,22 @@ import React, { Component, Fragment } from 'react';
 import {Link} from '@reach/router';
 import * as api from '../Assets/api';
 
-class Article extends Component {
+class Articles extends Component {
+
     state = {
-        articles: []
+        articles: this.props.articles
     }
     
     render() {
+
+        console.log(this.state.articles, 'from Articles')
+
+        const { articles } = this.state
         
         return (
 
             <div>
-                {this.state.articles.map((article) => 
+                {articles.map((article) => 
                    <article key={article._id} className='article'>
                        <h1> <Link  to={`/article/${article._id}`}>
                             {article.title}
@@ -62,15 +67,7 @@ class Article extends Component {
 
     }
 
-    componentDidMount() {
-        if (!this.state.articles.length )
-         api.getArticles()
-          .then((articles) => {
-     
-          this.setState({articles})
-        })
-        .catch(console.log) //add error handler
-    }
+    
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.topic !== this.props.topic)
@@ -80,6 +77,8 @@ class Article extends Component {
                    this.setState({articles})
                 })
                 .catch(console.log) //add error handler
+
+        
     }
 
     
@@ -90,4 +89,4 @@ class Article extends Component {
 
 // };
 
-export default Article;
+export default Articles;
