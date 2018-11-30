@@ -311,6 +311,10 @@ p {
   background-color: white;
 }
 
-.vote-up {
+.voted {
+  background-color: #96858f;
+}
+
+.unliked {
   background-color: #96858f;
 }
