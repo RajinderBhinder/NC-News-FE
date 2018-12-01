@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import { navigate } from '@reach/router';
+import { Alert } from 'reactstrap';
+
 
 class AddComment extends Component {
 
     state = {
         body: '',
-        created_by: this.props.user._id
+        created_by: this.props.user._id,
+        alert: false
 
     }
+
     render() {
 
         
@@ -17,7 +21,15 @@ class AddComment extends Component {
                 <form onSubmit={this.handleSubmit} >
                     <div className='typebox' >
                         <input onChange={this.handleChange} value={this.state.body} type='text' /> <br/>
-                        <button>Comment</button>
+                        
+                        { this.state.alert &&
+                            <Alert class="login-alert">
+                                    Please add a comment !
+                            </Alert>
+                        }
+
+                         <button>Comment</button>
+
                     </div>
                 </form>
             </div>
@@ -36,6 +48,13 @@ class AddComment extends Component {
         event.preventDefault();
         const { body, created_by } = this.state;
         const { article_id } = this.props;
+
+        if (body.length === 0) {
+
+            this.setState({
+                alert: true
+            })
+        } else {
         const newComment = {
             
             body,
@@ -53,7 +72,7 @@ class AddComment extends Component {
             .catch(err => console.log(err, 'err'))
 
 
-
+        }
     }
 }
 

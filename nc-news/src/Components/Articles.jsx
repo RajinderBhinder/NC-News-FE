@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {Link} from '@reach/router';
 import * as api from '../Assets/api';
+import gear from '../Assets/Gear-1s-200px.gif'
 
 class Articles extends Component {
 
@@ -10,15 +11,12 @@ class Articles extends Component {
     }
 
     
-    
     render() {
    
         
         const {articles} = this.state
         
-        if (this.state.loading) return <div class="lds-spinner"><div></div><div></div><div></div><div>
-                                           </div><div></div><div></div><div></div><div></div>
-                                         <div></div><div></div><div></div><div></div></div>
+        if (this.state.loading) return <img src={gear} alt='loading'/>
 
         
         return (
