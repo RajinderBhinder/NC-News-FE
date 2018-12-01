@@ -1,14 +1,15 @@
 .App {
   text-align: center;
+  font-family: Georgia;
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 2fr 1fr 9fr 1fr;
+  grid-template-rows: 2fr 1fr 9fr ;
   grid-template-areas: 
            'header header header'
            'nav nav nav'
            'left main right'
-           'footer footer footer'
+           
 
 }
 /* --------------------------------Header------------------------------------------*/
@@ -134,22 +135,13 @@ section button {
           ---------------------------------------------------           */
 main {
   grid-area: main;
-  background-color: #96858f;
-}
-
-footer {
-  border: 1px blue solid;
-  grid-area: footer;
-}
-
-
-.article {
-  border: 1px black solid;
-  display: block;
-  margin: 10px;
-  padding: 10px;
   background-color: #d5d5d5;
+  height: 100vh;
 }
+
+
+
+
 
 
 .dropbtn {
@@ -212,68 +204,6 @@ footer {
 }
 
 
-/*        ---------------------------------------------------
--------------------------------- comment -------------------------------------
-          ---------------------------------------------------           */
-.comment-like {
-  border: 1px #96858f solid;
-  height: 30px;
-  background-color: white;
-}
-
-.commentsForArticle {
-  border: 1px #96858f solid;
-  margin: 1px;
-  padding: 20px;
-}
-
-p {
-  padding-bottom: 30px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  
-}
-
-
-
-/*        ---------------------------------------------------
--------------------------------- addComment -------------------------------------
-          ---------------------------------------------------           */
-
-.addComment {
-  border: 1px black solid;
-  height: 100px;
-  margin: 20px;
-  border-radius: 5px;
-}
-
-.addComment form {
-  height: 70px;
-  padding: 0;
-  border-radius: 5px;
-  
-}
-
-.addComment input {
-  margin: 1px;
-  padding: 0; 
-  height: 30px;
-  width: 1000px;
-  border-radius: 5px;
-}
-
-
-.addComment button {
-  margin-top: 2px;
-  padding: 0; 
-  height: 30px;
-  width: 100px;
-  background-color: #96858f;
-  border-radius: 20px;
-  font-size: 15px;
-  
-}
 
 
 /*        ---------------------------------------------------
@@ -485,9 +415,13 @@ p {
   height: 40px;
   width: 98%;
   margin-left: 1%;
-  
+}
+
+.goto-comments {
+  color: #4e0932;
 
 }
+
 
 .article-bar button {
   width: 60px;
@@ -495,7 +429,17 @@ p {
   border-radius: 10px;
   font-size: 15px;
   box-shadow: 1px 2px 2px #d5d5d5;
+  
 }
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color:#c9bfc5;
+}
+
 
 .article-bar label {
   font-size: 20px;
@@ -504,3 +448,189 @@ p {
   font-weight: bold;
   text-shadow: 1px 1px 2px #d5d5d5;
 }
+
+.article-bar span {
+  font-size: 20px;
+  text-shadow: 1px 1px 2px #d5d5d5;
+  margin: 5px;
+}
+
+
+/*        ---------------------------------------------------
+-------------------------------- .comments-bar -------------------------------------
+          ---------------------------------------------------           */
+
+
+.comments-bar {
+  
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border: 1px black solid;
+    background-color: #6d7993;
+    height: 40px;
+    width: 98%;
+    margin-left: 1%;
+    font-size: 25px;
+    font-style: unset
+  
+}
+
+.pointing-down {
+  margin: 5px;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  
+  text-shadow: 2px 2px 5px white;
+}
+
+/*        ---------------------------------------------------
+-------------------------------- eachComment -------------------------------------
+    ---------------------------------------------------           */
+
+
+    .eachComment {
+      
+      margin: 1px;
+      padding: 20px;
+      width: 92%;
+      margin-left: 2%;
+      margin-right: 1%;
+      box-shadow: 0 0 0 10px hsl(0, 0%, 80%),
+      0 0 0 15px hsl(0, 0%, 90%);
+    }
+    
+    .eachComment p {
+      padding: 5px;
+      font-size: 20px;
+    }
+
+    .eachComment-bar {
+      background-color: #d5d5d5;
+    }
+
+    .eachComment-bar span {
+      margin-left: 5%;
+    }
+
+    .eachComment-bar button {
+      width: 50px;
+      border: 1px solid black;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+    
+    
+    
+    /*        ---------------------------------------------------
+    -------------------------------- addComment -------------------------------------
+              ---------------------------------------------------           */
+    
+    .addComment {
+      border: 1px black solid;
+      height: 100px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+    
+    .addComment form {
+      height: 70px;
+      padding: 0;
+      border-radius: 5px;
+      
+    }
+    
+    .addComment input {
+      margin: 1px;
+      padding: 0; 
+      height: 30px;
+      width: 1000px;
+      border-radius: 5px;
+    }
+    
+    
+    .addComment button {
+      margin-top: 2px;
+      padding: 0; 
+      height: 30px;
+      width: 100px;
+      background-color: #96858f;
+      border-radius: 20px;
+      font-size: 15px;
+      border: 1px solid #6d7993;
+      
+      
+    }
+    
+  /*        ---------------------------------------------------
+  -------------------------------- addArticle -------------------------------------
+            ---------------------------------------------------           */
+    
+  .addArticle button {
+    margin-top: 50px;
+    margin-left: 10px;
+    padding: 0; 
+    height: 30px;
+    width: 100px;
+    background-color: #96858f;
+    border-radius: 20px;
+    font-size: 15px;
+    border: 1px solid #6d7993;
+    box-shadow: 2px 2px 5px #6d7993;
+    
+  }
+
+  .addArticle-title {
+    margin: 20px;
+    width: 200px;
+    height: 30px;
+    box-shadow: 2px 2px 5px #6d7993;
+  }
+
+  .addArticle-body {
+    margin: 20px;
+    width: 70%;
+    height: 300px;
+    box-shadow: 2px 2px 5px #6d7993;
+    
+  }
+
+  .addArticle input:focus {
+    outline: none;
+  }
+
+  .addArticle textarea {
+    height: 300px;
+    
+  }
+
+/*        ---------------------------------------------------
+    -------------------------------- article -------------------------------------
+              ---------------------------------------------------           */
+
+            
+  .article {
+    border: 1px black solid;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    background-color: #d5d5d5;
+  }
+
+  .article h1 {
+    font-size: 35px;
+  }
+
+  .article p {
+    font-size: 20px;
+  }
+
+  a:link {
+    text-decoration: none;
+    color: #4e0932;
+  }
+
+  a:visited {
+    color: #4e0932;
+  }

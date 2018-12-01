@@ -14,28 +14,32 @@ class Comment extends Component {
         const {comment} = this.props;
         return (
 
-            <div className='commentsForArticle' key={comment._id} > 
-                         <div>
+            <div className='eachComment' key={comment._id} > 
+                         <p>
                              {comment.body}
-                         </div>
+                         </p>
 
-                         <div className='bar'>
-                            <div>
+                         <div key={comment._id}className='eachComment-bar'>
+                            <h4>
                                 {comment.created_by.name}
-                            </div>
+                            </h4>
                             
-                            <label > -- { comment.votes =  comment.votes + this.state.modifier  }  Votes -- </label>
+                            <label > &#8882; { comment.votes =  comment.votes + this.state.modifier  }  Votes &#8883; </label>
+
+        
 
                             <button className={this.state.voted? 'voted' : 'vote'} value={this.state.voted? 'down':'up'} onClick={(event) => this.handleLikeClick(event, comment._id) } >
-                                Like
+                                   &#9829;
                             </button>
-
-                            <button> {comment.created_at.slice(0, 9)}</button>
 
                             {this.props.user._id === comment.created_by._id && 
                                 <button onClick={(event) => this.handleDeleteComment(event, comment._id)}>
                                    Delete
-                                </button>}
+                            </button>}
+
+                            <span> {comment.created_at.slice(0, 10)}</span>
+
+                            
                         </div>
             </div>         
 

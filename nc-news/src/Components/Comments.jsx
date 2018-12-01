@@ -16,12 +16,17 @@ class Comments extends Component {
         return (
 
             <div> 
+                <div className='comments-bar'> {this.state.comments.length} Comments
+                <span className='pointing-down'>&#9759; </span> 
+
+                </div>
                 {this.props.user._id && <AddComment updateComments={this.updateComments} user={this.props.user} article_id={this.props.id} /> }
                 {this.state.comments.map((comment) => 
                    
                      <Comment removeDeletedComment={this.removeDeletedComment} user={this.props.user} comment={comment}/>    
                     
                     )}
+                
             </div>
                 
         );

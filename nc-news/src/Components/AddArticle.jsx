@@ -15,7 +15,7 @@ class AddArticle extends Component {
 
         return (
            
-            < div>
+            < main className='addArticle'>
                 {this.props.topics.map((topic) =>
                     <button onClick={(event) => this.handleClick(event, topic.slug)} key={topic._id} to={`/topics/${topic.slug}`}>
                         {topic.title}
@@ -24,11 +24,12 @@ class AddArticle extends Component {
 
                 {this.state.topic &&
                     <form onSubmit={this.handleSubmit} className='addArticle'>
-                        <label>Title</label>
-                        <input onChange={this.handleChange} id='title' className='article-title' type='text' /> <br />
+                        <label className='addArticle-title-label'>Title</label>
+                        <input onChange={this.handleChange} id='title' className='addArticle-title' type='text' /> <br />
 
-                        <label>Body</label>
-                        <input onChange={this.handleChange} id='body' className='article-body' type='text' /> <br />
+                        <label className='addArticle-body-label'>Body</label> <br/>
+                        <textarea onChange={this.handleChange} id='body' className='addArticle-body' type='text' ></textarea> <br />
+                        
 
                         <button>Post</button>
 
@@ -36,7 +37,7 @@ class AddArticle extends Component {
                 }
 
 
-            </div>
+            </main>
             
 
         );

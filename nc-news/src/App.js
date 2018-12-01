@@ -51,7 +51,7 @@ class App extends Component {
            <section className="right"></section> 
 
 
-          <footer>footer</footer>
+          
 
         <Router>
 

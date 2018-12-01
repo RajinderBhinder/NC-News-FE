@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import {Link} from '@reach/router';
+import React, { Component } from 'react';
 import * as api from '../Assets/api';
-import gear from '../Assets/Gear-1s-200px.gif'
+import gear from '../Assets/Gear-1s-200px.gif';
+import Article from './Article';
 
 class Articles extends Component {
 
@@ -23,48 +23,12 @@ class Articles extends Component {
             
             <div>
                 {articles.map((article) => 
-                   <article key={article._id} className='article'>
-                       <h1> <Link  to={`/article/${article._id}`}>
-                            {article.title}
-                        </Link> </h1>
-                        <div>
-                            {article.body}
-
-                        </div>
-                        <h4 className='author'>
-                            <Link to={`/users/${article.created_by.username}`} articleuser={article.created_by}>
-                              - {article.created_by.name}
-                            </Link>
-                        </h4>
-                        <div className='bar'>
-                            <label>{article.comment_count}</label>
-                            <button><Link to={`/article/${article._id}`}>
-                                Comments
-                            </Link > </button>
-                            <label >{article.votes}</label>
-
-                            <button >
-                                Votes
-                            </button>
-
-                            <div> {article.created_at.slice(0, 9)}</div>
-
-                        </div>
-
-                        <div className='comment-like'>
-                            <button><Link to={`/article/${article._id}`}>
-                                Comment
-                            </Link></button>
-                            
-                            <button className='vote'>
-                                Like
-                            </button>
-
-                            
-                        </div>
-
-                    </article>
+                    
+                      <Article article={article}/>
+                    
                 )} 
+
+
             </div>
                 
         );
