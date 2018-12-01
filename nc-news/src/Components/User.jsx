@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Card, CardBody,
+    CardTitle, CardSubtitle } from 'reactstrap';
 
 class User extends Component {
     render() {
@@ -6,19 +8,18 @@ class User extends Component {
         const {user, articleuser} = this.props;
         console.log(user, articleuser)
         return (
+            
+
             <div>
-                  {user && <img src={`${user.avatar_url}`} />} 
-
-                  {articleuser && <img src={`${articleuser.avatar_url}`} /> }<br/>
-                   <label>Username:</label>
-                 { user && <h2>{user.username }</h2>}  
-                 { articleuser && <h2>{articleuser.username }</h2>}  
-                 <br/>
-                   <label>Name</label>
-
-                 { user && <h2>{user.name }</h2>}  
-                 { articleuser && <h2>{articleuser.name }</h2>}  
-             </div> 
+            <Card>
+            <CardBody>
+                <CardTitle>{user.username }</CardTitle>
+                <CardSubtitle>{user.name }</CardSubtitle>
+            </CardBody>
+            <img width="70%" src={`${user.avatar_url}`} alt="User image" />
+            
+            </Card>
+            </div>
         );
     }
 }

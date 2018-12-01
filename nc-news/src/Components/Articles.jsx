@@ -16,7 +16,9 @@ class Articles extends Component {
         
         const {articles} = this.state
         
-        if (this.state.loading) return <p>loading</p>
+        if (this.state.loading) return <div class="lds-spinner"><div></div><div></div><div></div><div>
+                                           </div><div></div><div></div><div></div><div></div>
+                                         <div></div><div></div><div></div><div></div></div>
 
         
         return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Router} from '@reach/router';
 import './App.css';
+
 import Topics from './Components/Topics';
 import Sort from './Components/Sort';
 import Articles from './Components/Articles';
@@ -35,6 +36,7 @@ class App extends Component {
         
         <Header user={this.state.user} />
         <nav>
+        
           <button><Link to='/'>Home</Link></button>
           <Topics topics={this.state.topics}  />
           <Sort />
