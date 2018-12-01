@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import Comments from './Comments';
-import AddComment from './AddComment';
 
 class Article extends Component {
     state = {

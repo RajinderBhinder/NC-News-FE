@@ -25,10 +25,10 @@ class AddArticle extends Component {
                 {this.state.topic &&
                     <form onSubmit={this.handleSubmit} className='addArticle'>
                         <label>Title</label>
-                        <input onChange={this.handleTitleChange} className='article-title' type='text' /> <br />
+                        <input onChange={this.handleChange} id='title' className='article-title' type='text' /> <br />
 
                         <label>Body</label>
-                        <input onChange={this.handleBodyChange} className='article-body' type='text' /> <br />
+                        <input onChange={this.handleChange} id='body' className='article-body' type='text' /> <br />
 
                         <button>Post</button>
 
@@ -49,20 +49,14 @@ class AddArticle extends Component {
         })
     }
 
-    handleTitleChange = (event) => {
+    handleChange = (event) => {
         this.setState({
 
-            title: event.target.value
+            [event.target.id]: event.target.value
         })
     }
 
-    handleBodyChange = (event) => {
-
-        this.setState({
-            
-            body: event.target.value
-        })
-    }
+    
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -72,8 +66,8 @@ class AddArticle extends Component {
             body,
             created_by
         }
-        api.addArticle(newArticle, topic).
-            then(article => {
+        api.addArticle(newArticle, topic)
+            .then(article => {
                 navigate(`/article/${article._id}`)
             })
             .catch(err => console.log(err, 'err'))

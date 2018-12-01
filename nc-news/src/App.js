@@ -15,6 +15,7 @@ import AddComment from './Components/AddComment';
 import Comments from './Components/Comments';
 import NotFound from './Components/NotFound';
 import Search from './Components/Search';
+import RegisterUser from './Components/RegisterUser';
 
 
 class App extends Component {
@@ -52,7 +53,8 @@ class App extends Component {
           <Articles path='/articles' user={this.state.user} /> 
           <Articles path='/topics/:topic' user={this.state.user} /> 
           <Articles path='/user/articles' user={this.state.user}   />
-          <Articles path='/articles/byUser' filterByUser={this.filterByUser} />
+          <Articles path='/articles/:sortTopic' user={this.state.user} />
+          
 
           <Article path='/article/:article_id' user={this.state.user}/>
           
@@ -64,9 +66,10 @@ class App extends Component {
 
           <AddComment path='/article/comment' />
 
-          <Comments path='article/:id/comments' />
+          <Comments path='/article/:id/comments' />
 
           <NotFound default />
+          <RegisterUser path='/register' />
 
         </Router>
 
