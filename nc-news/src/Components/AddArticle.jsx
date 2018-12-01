@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { navigate } from '@reach/router'
 import * as api from '../Assets/api';
+import { Alert } from 'reactstrap';
 
 class AddArticle extends Component {
 
@@ -10,6 +11,9 @@ class AddArticle extends Component {
         created_by: this.props.user._id,
         topic: '',
         article: {},
+        selectionMade: false,
+        err: '',
+        noInputFor: '',
     }
     render() {
 
@@ -21,6 +25,13 @@ class AddArticle extends Component {
                         {topic.title}
                     </button>
                 )}
+                <br/>
+                { this.state.selectionMade &&
+                            <Alert >
+                                <br/>
+                                You selected  {this.state.topic}  !
+                            </Alert>
+                 }
 
                 {this.state.topic &&
                     <form onSubmit={this.handleSubmit} className='addArticle'>
@@ -30,8 +41,22 @@ class AddArticle extends Component {
                         <label className='addArticle-body-label'>Body</label> <br/>
                         <textarea onChange={this.handleChange} id='body' className='addArticle-body' type='text' ></textarea> <br />
                         
+                        { this.state.noInputFor &&
+                            <Alert >
+                                <br/>
+                                Please enter '{this.state.noInputFor}' !
+                            </Alert>
+                        }
+
 
                         <button>Post</button>
+
+                        { this.state.err &&
+                            <Alert >
+                                <br/>
+                                Unable to post Article - make sure you are logged in and try again  !
+                            </Alert>
+                        }
 
                     </form>
                 }
@@ -46,7 +71,8 @@ class AddArticle extends Component {
     handleClick = (event, slug) => {
         event.preventDefault();
         this.setState({
-            topic: slug
+            topic: slug,
+            selectionMade: true
         })
     }
 
@@ -62,22 +88,37 @@ class AddArticle extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { title, body, created_by, topic } = this.state;
-        const newArticle = {
-            title,
-            body,
-            created_by
-        }
-        api.addArticle(newArticle, topic)
-            .then(article => {
-                navigate(`/article/${article._id}`)
+        if (title.length === 0) {
+            this.setState({
+                noInputFor: 'title'
             })
-            .catch(err => console.log(err, 'err'))
+        } else if (body.length === 0){
+            this.setState({
+                noInputFor: 'body'
+            })
+        } else {
+
+            this.setState({
+                noInputFor: ''
+            })
+
+            const newArticle = {
+                title,
+                body,
+                created_by
+            }
+            api.addArticle(newArticle, topic)
+                .then(article => {
+                    navigate(`/article/${article._id}`)
+                })
+                .catch(err => {
+                    this.setState({err})
+                })
+        }
 
     }
 }
 
-// AddArticle.propTypes = {
 
-// };
 
 export default AddArticle;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
-import { navigate } from '@reach/router';
 import { Alert } from 'reactstrap';
 
 
@@ -9,7 +8,9 @@ class AddComment extends Component {
     state = {
         body: '',
         created_by: this.props.user._id,
-        alert: false
+        alert: false,
+        err: ''
+
 
     }
 
@@ -26,6 +27,12 @@ class AddComment extends Component {
                             <Alert class="login-alert">
                                     Please add a comment !
                             </Alert>
+                        }
+
+                        { this.state.err && 
+                           <Alert class="err-alert">
+                               Unable to post comment - please try again !
+                          </Alert>
                         }
 
                          <button>Comment</button>
@@ -69,15 +76,15 @@ class AddComment extends Component {
                     body: ''
                 })
             })
-            .catch(err => console.log(err, 'err'))
+            .catch(err => {
+                this.setState({err})
+            })
 
 
         }
     }
 }
 
-AddComment.propTypes = {
 
-};
 
 export default AddComment;

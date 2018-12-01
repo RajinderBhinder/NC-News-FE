@@ -17,7 +17,7 @@ class Comments extends Component {
 
             <div> 
                 <div className='comments-bar'> {this.state.comments.length} Comments
-                <span className='pointing-down'>&#9759; </span> 
+                {!!this.state.comments.length && <span className='pointing-down'>&#9759; </span> }
 
                 </div>
                 {this.props.user._id && <AddComment updateComments={this.updateComments} user={this.props.user} article_id={this.props.id} /> }

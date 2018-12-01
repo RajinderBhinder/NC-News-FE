@@ -60,7 +60,9 @@ class Articles extends Component {
             loading: false,
             articles})
         })
-        .catch(console.log) //add error handler
+        .catch(err => {
+            
+        }) //add error handler
     }
 
     componentDidUpdate(prevProps, prevState) {
