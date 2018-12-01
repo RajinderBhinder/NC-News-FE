@@ -4,29 +4,20 @@ import ArticlesByYou from './ArticlesByYou';
 import ProfileStrength from './ProfileStrength';
 import * as api from '../Assets/api'
 
-class LeftSection extends Component {
+const LeftSection = () => {
 
-    state = {
-        articles: []
-    }
 
-    render () {
+    
         return (
             <section >
             <button> <Link to='/addArticle'> Add a new Article </Link> </button>
-            <ArticlesByYou articles={this.state.articles} user_id= {this.props.user_id} />
+            <ArticlesByYou   />
             <ProfileStrength />
             </section>
         );
 
-    }  
+     
     
-    componentDidMount() {
-         api.getArticles()
-         .then(articles => {
-             this.setState({articles})
-         })
-    }
 };
 
 

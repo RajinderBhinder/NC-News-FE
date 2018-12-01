@@ -30,16 +30,25 @@
 .header img {
   position: absolute;
   right: 60px;
-  top: 50px;
+  top: 30px;
   display: block;
   width: 150px;
   height: 150px;
   border-radius: 20px;
   border: 3px #9099a2 solid;
   box-shadow: 5px 5px 5px white;
-  max-width: 100%;
-  max-height: 100%;
-  
+  max-width: 50%;
+  max-height: 50%;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg')
+}
+
+.header figcaption {
+  color: black;
+  position: absolute;
+  right: 100px;
+  top: 190px;
+  display: block;
+  font-size: 20px;
 }
 
 .o {

@@ -18,6 +18,8 @@ import Search from './Components/Search';
 import RegisterUser from './Components/RegisterUser';
 
 
+
+
 class App extends Component {
   state = {
     articles: [],
@@ -44,7 +46,9 @@ class App extends Component {
         
         { !this.state.user._id && <section className="left"></section> }
 
-        <section className="right"></section>
+           <section className="right"></section> 
+
+
           <footer>footer</footer>
 
         <Router>

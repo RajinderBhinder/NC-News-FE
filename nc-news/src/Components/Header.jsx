@@ -12,19 +12,17 @@ const Header = ({user}) => {
                 <span className='o'>N&#770;</span>orthcoders News
                 
             </header>
-            <div>
+            <figure>
                 {user.avatar_url && <Link to={`/users/${user.username}`}> 
                    <img src={user.avatar_url } onError={(e)=>{ e.target.src={image}}}/> 
                 </Link>}
-            </div>
+                <figcaption>{user.username}</figcaption>
+            </figure>
 
          </div>
 
     );
 };
 
-// Header.propTypes = {
-    
-// };
 
 export default Header;
