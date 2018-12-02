@@ -40,21 +40,9 @@ class Articles extends Component {
         
         api.getArticles()
         .then((articles) => {
-         
-        //if (this.props.sortTopic === 'byUser') {
-           
-        //     return articles.reduce((acc,article) => {
-        //         if(article.created_by._id === this.props.user_id ) 
-        //            acc.push(article)
-        //            return acc;
-        //       },[])
-        // }  else {
+        
 
-            articles.sort((a, b) => {
-            return +new Date(b.created_at) - +new Date(a.created_at)
-            })
-        //}
-          
+           
         this.setState({
             loading: false,
             articles})
@@ -65,7 +53,46 @@ class Articles extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.sortTopic !== this.props.sortTopic) {
+
+            let sortedArticles;
+            if (this.props.sortTopic === 'byUser') {
+            
+                sortedArticles =  this.state.articles.reduce((acc,article) => {
+                   
+                    if(article.created_by._id === this.props.user._id ) {
+                        acc.push(article)
+                    }
+                    return acc;
+                },[])
+
+                
+
+                this.setState({
+                    articles: sortedArticles
+                })
+
+
+            } else if ( this.props.sortTopic === 'latest') {
+
+                sortedArticles =  this.state.articles.sort((a, b) => {
+                    return +new Date(b.created_at) - +new Date(a.created_at)
+                    })
+
+                return sortedArticles
+            } 
+            
+            
+
+            this.setState({
+                articles: sortedArticles
+            })
+
+           
+        }
         
+        else {
         
         if ((prevProps.topic !== this.props.topic) )
             api.getArticles(this.props.topic)
@@ -75,12 +102,10 @@ class Articles extends Component {
                    this.setState({articles})
                 })
                 .catch(console.log) //add error handler
+            }
     }
     
-    // sortArticlesByTopic = () => {
-    //     if (this.props)
-    // }
-    
+   
     
 }
 
