@@ -36,13 +36,11 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        if (!this.state.articles.length || this.props.sortTopic)
+        if (!this.state.articles.length )
         
         api.getArticles()
         .then((articles) => {
-        
 
-           
         this.setState({
             loading: false,
             articles})
@@ -81,10 +79,19 @@ class Articles extends Component {
                     })
 
                 return sortedArticles
-            } 
-            
-            
+            } else if (this.props.sortTopic === 'popularity') {
 
+                sortedArticles = this.state.articles.sort((a, b) => {
+                    return b.comment_count - a.comment_count
+                })
+
+            } else if (this.props.sortTopic === 'rating') {
+
+                sortedArticles = this.state.articles.sort((a, b) => {
+                    return b.votes - a.votes
+                })
+            }
+            
             this.setState({
                 articles: sortedArticles
             })
@@ -109,8 +116,5 @@ class Articles extends Component {
     
 }
 
-// Article.propTypes = {
-
-// };
 
 export default Articles;
