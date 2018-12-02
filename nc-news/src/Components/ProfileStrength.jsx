@@ -45,7 +45,7 @@ class ProfileStrength extends Component {
             <br/> <br/>
                 <h2>Profile Strength</h2> <br/> <br/>
                 
-                <Pie data={data} /> <br/> <br/>
+                <Pie data={data} /> <br/> 
 
                 <div className='likeability'> Likeability: Based on votes on your articles </div>
 
