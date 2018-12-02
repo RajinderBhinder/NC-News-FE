@@ -9,18 +9,22 @@ export const getTopics = async () => {
  }
 
 
- export const getData = async (id) => {
+ export const getData = async () => {
      
-    return  axios.get(`${baseURL}/articles/${id}`)
-    .then(({data: {article}}) => {
+    return  axios.get(`${baseURL}/articles`)
+    .then(({data: {articles}}) => {
 
-        console.log(article)
-        return Promise.all([article, axios.get(`${baseURL}/articles/${id}/comments`)])
+        const commentsArray = Promise.all(articles.map(eachArticle => {
+
+            axios.get(`${baseURL}/articles/${eachArticle._id}/comments`)
+
+        }))
+                           
+
+        return Promise.all([articles, commentsArray])
+
     })
-    .then(([article, {data:{comments}}]) => {
-        console.log('comments', comments)
-         return Promise.all([article, comments])
-    })
+    
  }
 
  export const getArticles = async (topic) => {

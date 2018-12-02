@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import gear from '../Assets/Gear-1s-200px.gif';
 import Article from './Article';
+import { navigate } from '@reach/router/lib/history';
 
 class Articles extends Component {
 
@@ -46,7 +47,7 @@ class Articles extends Component {
             articles})
         })
         .catch(err => {
-
+             navigate('/')
         }) //add error handler
     }
 
@@ -91,7 +92,7 @@ class Articles extends Component {
                     return b.votes - a.votes
                 })
             }
-            
+
             this.setState({
                 articles: sortedArticles
             })
@@ -104,8 +105,7 @@ class Articles extends Component {
         if ((prevProps.topic !== this.props.topic) )
             api.getArticles(this.props.topic)
                 .then((articles) => {
-                    
-        
+
                    this.setState({articles})
                 })
                 .catch(console.log) //add error handler

@@ -18,6 +18,7 @@ import NotFound from './Components/NotFound';
 import Search from './Components/Search';
 import RegisterUser from './Components/RegisterUser';
 import Draft from './Components/Draft';
+import ProfileStrength from './Components/ProfileStrength';
 
 
 
@@ -72,6 +73,7 @@ class App extends Component {
 
           <AddArticle path='/addArticle' topics={this.state.topics} user={this.state.user} />
           <Draft path='/articles_draft' />
+          <ProfileStrength path='/user/profile_strength' user={this.state.user} />
 
           <AddComment path='/article/comment' />
 
@@ -94,7 +96,9 @@ class App extends Component {
         this.setState({topics})
       })
       
-        .catch(console.log) //add error handler
+        .catch(err => {
+
+        }) //add error handler
   }
 
   filterByUser = (articles) => {
