@@ -25,14 +25,15 @@ class ProfileStrength extends Component {
                 data: Object.values(this.state.userData),
                 backgroundColor: [
                 '#FF6384',
-                'purple',
-                '#FFCE56',
+                ' #4e0932',
+                '#DECCCC',
+                
                 
                 ],
                 hoverBackgroundColor: [
                 '#FF6384',
-                'purple',
-                '#FFCE56'
+                '#4e0932',
+                '#DECCCC'
                 ]
             }]
         }
@@ -44,7 +45,14 @@ class ProfileStrength extends Component {
             <br/> <br/>
                 <h2>Profile Strength</h2> <br/> <br/>
                 
-                <Pie data={data} />
+                <Pie data={data} /> <br/> <br/>
+
+                <div className='likeability'> Likeability: Based on votes on your articles </div>
+
+                <div className='contribution'> Contribution: Based on articles posted by you </div>
+                <div className='popularity'> Popularity: Based on total comments on your articles</div>
+
+
           </main>
             
         );
