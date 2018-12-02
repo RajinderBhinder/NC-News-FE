@@ -12,6 +12,13 @@ class Draft extends Component {
     }
 
     render () {
+        if (localStorage.getItem('body') === null) return <main className='draft'> <h2> You do not have any Draft! <br/>
+               </h2>
+               Either your article is already posted <br/>
+               Or you have not saved a draft!
+               </main>
+
+        if (localStorage.getItem('body') )
         return (
             <main className='draft'>
                 <h1> <br/> {localStorage.getItem('title')} <br/></h1>
@@ -65,6 +72,10 @@ class Draft extends Component {
             api.addArticle(newArticle, topic)
                 .then(article => {
                     navigate(`/article/${article._id}`)
+                    localStorage.removeItem('topic');
+                    localStorage.removeItem('created_by');
+                    localStorage.removeItem('title');
+                    localStorage.removeItem('body');
                 })
                 .catch(err => {
                     console.log(err)

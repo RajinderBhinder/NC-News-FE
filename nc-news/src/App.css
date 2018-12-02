@@ -144,6 +144,8 @@ main {
 
 
 
+
+
 .dropbtn {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -547,6 +549,11 @@ button:hover {
       height: 30px;
       width: 1000px;
       border-radius: 5px;
+      font-size: 15px;
+    }
+
+    .addComment input:focus {
+      outline: none;
     }
     
     
@@ -679,4 +686,9 @@ button:hover {
     margin-right: auto;
     padding: 20px;
     border-radius: 10px;
+  }
+
+  .draft h2 {
+    margin-top: 0px;
+    padding-top: 60px;
   }
