@@ -13,9 +13,11 @@ const Header = ({user}) => {
                 
             </header>
             <figure>
-                {user.avatar_url && <Link to={`/users/${user.username}`}> 
+                {/* {  user.avatar_url && <Link to={{  pathname: `/users/${user.username}`, state: {user: user}   }}> */}
+
+                 {  user.avatar_url && <Link to={ `/users/${user.username}` }>
                    <img src={user.avatar_url } onError={(e)=>{ e.target.src={image}}} alt='profile'/> 
-                </Link>}
+                </Link>  }
                 <figcaption>{user.username}</figcaption>
             </figure>
 

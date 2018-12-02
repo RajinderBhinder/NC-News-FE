@@ -8,8 +8,10 @@ const LeftSection = () => {
         return (
             <section >
             <button> <Link to='/addArticle'> Add a new Article </Link> </button>
+            <button> <Link to='/articles_draft'> Draft </Link> </button>
             <ArticlesByYou   />
             <ProfileStrength />
+            
             </section>
         );
 

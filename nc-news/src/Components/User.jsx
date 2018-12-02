@@ -5,21 +5,23 @@ import { Card, CardBody,
 class User extends Component {
     render() {
         
-        const {user, articleuser} = this.props;
-        console.log(user, articleuser)
+        // const {user} = this.props.location.state;
+
+        const {user} = this.props;
+        
         return (
             
 
-            <div>
-            <Card>
+            <main className='userCard'>
+            <Card >
             <CardBody>
-                <CardTitle>{user.username }</CardTitle>
-                <CardSubtitle>{user.name }</CardSubtitle>
+                <CardTitle className='card-title'>Username: {user.username }</CardTitle>
+                <CardSubtitle>Name: {user.name }</CardSubtitle>
             </CardBody>
             <img width="70%" src={`${user.avatar_url}`} alt="User image" />
             
             </Card>
-            </div>
+            </main>
         );
     }
 }

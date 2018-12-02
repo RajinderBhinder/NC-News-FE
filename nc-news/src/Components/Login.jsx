@@ -13,9 +13,7 @@ class Login extends Component {
     render() {
        
         return (  
-            <>
-
-                    
+            <>   
                 <form onSubmit={this.handleSubmit} className='login-form'>
                     <h1>Please Enter your Username and Password</h1>
                     <label>Username</label>
@@ -31,9 +29,6 @@ class Login extends Component {
                     }
 
                 </form>
-
-
-
                 </>
            
         );
@@ -56,12 +51,14 @@ class Login extends Component {
                 this.setState({
                     alert: false
                 })
-               
+               localStorage.setItem('user',JSON.stringify(user))
                this.props.setUser(user);
                navigate('/')
 
             })
             .catch((err )=> {
+
+                console.log(err)
                 this.setState({
                     alert: false
                 })
@@ -77,8 +74,5 @@ class Login extends Component {
     }
 }
 
-// Login.propTypes = {
-
-// };
 
 export default Login;

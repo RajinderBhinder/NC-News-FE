@@ -17,6 +17,7 @@ import Comments from './Components/Comments';
 import NotFound from './Components/NotFound';
 import Search from './Components/Search';
 import RegisterUser from './Components/RegisterUser';
+import Draft from './Components/Draft';
 
 
 
@@ -67,8 +68,10 @@ class App extends Component {
           <Login path='/login' setUser={this.setUser} />
 
           <User path='users/:username' user={this.state.user} />
+          {/* <User path='users/:username'  /> */}
 
           <AddArticle path='/addArticle' topics={this.state.topics} user={this.state.user} />
+          <Draft path='/articles_draft' />
 
           <AddComment path='/article/comment' />
 

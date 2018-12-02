@@ -10,13 +10,12 @@ class Articles extends Component {
         loading: true,
     }
 
-    
     render() {
    
         
         const {articles} = this.state
         
-        if (this.state.loading) return <img src={gear} alt='loading'/>
+        if (this.state.loading) return <> <br/> <br/> <img src={gear} alt='loading'/> </>
 
         
         return (
@@ -61,7 +60,7 @@ class Articles extends Component {
             articles})
         })
         .catch(err => {
-            
+
         }) //add error handler
     }
 

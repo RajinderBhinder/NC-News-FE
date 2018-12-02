@@ -26,11 +26,12 @@ class AddArticle extends Component {
                     </button>
                 )}
                 <br/>
+                
                 { this.state.selectionMade &&
-                            <Alert >
-                                <br/>
-                                You selected  {this.state.topic}  !
-                            </Alert>
+                        <Alert >
+                            <br/>
+                            You selected  {this.state.topic}  !
+                        </Alert>
                  }
 
                 {this.state.topic &&
@@ -50,11 +51,12 @@ class AddArticle extends Component {
 
 
                         <button>Post</button>
+                        <button onClick={this.handleDraftClick}>Save Draft</button>
 
                         { this.state.err &&
                             <Alert >
                                 <br/>
-                                Unable to post Article - make sure you are logged in and try again  !
+                                Unable to post Article - please check you're logged in and try again  !
                             </Alert>
                         }
 
@@ -83,7 +85,16 @@ class AddArticle extends Component {
         })
     }
 
-    
+    handleDraftClick = (event) => {
+        event.preventDefault();
+        localStorage.setItem('title', this.state.title);
+        localStorage.setItem('body', this.state.body);
+        localStorage.setItem('topic', this.state.topic);
+        localStorage.setItem('created_by', this.state.created_by);
+          
+              navigate('/')
+          
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();

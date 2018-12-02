@@ -14,7 +14,6 @@ class Article extends Component {
 
     render() {
         const article = this.props.article || this.state.article;
-        (console.log(article, 'hhhh'))
         
         return (
             <div>
@@ -22,7 +21,8 @@ class Article extends Component {
                     <h1> <Link to={`/article/${article._id}`}   > 
                     {article.title} </Link> </h1>
                     <p >{article.body}</p>
-                   {!this.props.article_id &&   <h3>{article.created_by.name }</h3> }
+                   {!this.props.article_id &&   <h3>
+                          {article.created_by.name } </h3> }
                    { !this.props.article_id && <h2>{article.created_at.slice(0, 10)}</h2> }
                     
                 </article>
