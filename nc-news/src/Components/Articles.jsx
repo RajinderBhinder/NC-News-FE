@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import gear from '../Assets/Gear-1s-200px.gif';
-import ArticleBar from './ArticleBar';
+
 import { navigate, Link} from '@reach/router';
 
 class Articles extends Component {
@@ -31,8 +31,8 @@ class Articles extends Component {
                     <div className = 'article-bar'>
                         <label> 
                                 <span>&#8882; </span> 
-                                {article.comment_count}  Comments
-                                 {/* <Link className='goto-comments' to={`/article/${article._id}`} > Comments </Link>  */}
+                                {article.comment_count}  
+                                 <Link className='goto-comments' to={`/article/${article._id}`} > Comments </Link> 
                                 <span>&#8883; </span>
                             
                         </label> 
@@ -59,7 +59,7 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-      if (!this.state.articles.length) {
+      
             api.getArticles()
             .then((articles) => {
 
@@ -68,9 +68,9 @@ class Articles extends Component {
                 articles})
             })
             .catch(err => {
-                console.log(err)
-            }) //add error handler
-        }    
+                navigate('/errors')
+            }) 
+           
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -120,6 +120,8 @@ class Articles extends Component {
             })
 
            
+        } else if ( this.props.sortTopic === undefined ) {
+            
         }
         
         else {
@@ -134,7 +136,9 @@ class Articles extends Component {
             }
     }
     
-   
+   fetchArticles = () => {
+       
+   }
     
 }
 

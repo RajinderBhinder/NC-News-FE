@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from '@reach/router';
 import image from '../Assets/double-exposure-female-silhouette-trees-double-exposure-female-silhouette-trees-contrust-solution-man-nature-lines-111738806.jpg'
 
 
 
-const Header = ({user}) => {
-    
+class Header extends Component {
+    render (){
+
+        const {user} = this.props;
     return (
         <div className='header'>
             <header>
@@ -16,7 +18,7 @@ const Header = ({user}) => {
                 {/* {  user.avatar_url && <Link to={{  pathname: `/users/${user.username}`, state: {user: user}   }}> */}
 
                  {  user.avatar_url && <Link to={ `/users/${user.username}` }>
-                   <img src={user.avatar_url } onError={(e)=>{ e.target.src={image}}} alt='profile'/> 
+                   <img src={user.avatar_url } ref={img => this.img = img} onError={ (e)=> this.img.src=image  } alt='profile'/> 
                 </Link>  }
                 <figcaption>{user.username}</figcaption>
             </figure>
@@ -24,6 +26,7 @@ const Header = ({user}) => {
          </div>
 
     );
+    }
 };
 
 

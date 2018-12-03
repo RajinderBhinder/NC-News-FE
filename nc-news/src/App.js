@@ -19,6 +19,8 @@ import Search from './Components/Search';
 import RegisterUser from './Components/RegisterUser';
 import Draft from './Components/Draft';
 import ProfileStrength from './Components/ProfileStrength';
+import HandlingErrors from './Components/HandlingErrors'
+import { navigate } from '@reach/router';
 
 
 
@@ -83,6 +85,8 @@ class App extends Component {
           <NotFound default />
           <RegisterUser path='/register' />
 
+          < HandlingErrors path='/errors' />
+
         </Router>
 
       </div>
@@ -103,7 +107,7 @@ class App extends Component {
       })
       
         .catch(err => {
-
+              navigate('/errors')
         }) //add error handler
   }
 

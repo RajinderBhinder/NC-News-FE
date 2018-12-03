@@ -29,9 +29,9 @@ class Article extends Component {
 
                     <p >{article.body}</p>
 
-                     {/* <h3>{article.created_by } </h3> */}
+                     <h3>{article.created_by } </h3>
 
-                    {/* <h2>{article.created_at.slice(0, 10)}</h2> */}
+                    <h2>{article.created_at.slice(0, 10)}</h2>
                     
                 </div>
 
