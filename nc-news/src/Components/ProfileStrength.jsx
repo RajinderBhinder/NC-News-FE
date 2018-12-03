@@ -41,7 +41,7 @@ class ProfileStrength extends Component {
     
         return (
 
-            <main class='profile-strength'>
+            <main className='profile-strength'>
             <br/> <br/>
                 <h2>Profile Strength</h2> <br/> <br/>
                 

@@ -75,6 +75,8 @@ class Articles extends Component {
 
     componentDidUpdate(prevProps, prevState) {
 
+        console.log(this.props.sortTopic)
+
         if (prevProps.sortTopic !== this.props.sortTopic) {
 
             let sortedArticles;
@@ -120,8 +122,18 @@ class Articles extends Component {
             })
 
            
-        } else if ( this.props.sortTopic === undefined ) {
-            
+        } else if ( this.props.sortTopic === 'undefined' ) {
+            api.getArticles()
+            .then((articles) => {
+
+            this.setState({
+                loading: false,
+                articles})
+            })
+            .catch(err => {
+                navigate('/errors')
+            }) 
+           
         }
         
         else {

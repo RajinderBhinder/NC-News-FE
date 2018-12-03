@@ -21,6 +21,7 @@ import Draft from './Components/Draft';
 import ProfileStrength from './Components/ProfileStrength';
 import HandlingErrors from './Components/HandlingErrors'
 import { navigate } from '@reach/router';
+import LogOut from './Components/LogOut';
 
 
 
@@ -42,11 +43,14 @@ class App extends Component {
         <Header user={this.state.user} />
         <nav>
         
-          <button><Link to='/'>Home</Link></button>
-          <Topics topics={this.state.topics}  />
-          <Sort />
-          <Search articles={this.state.articles} />
-          <button> <Link to='/login'> {this.state.user._id? 'Log Out' : 'Login'} </Link> </button>
+            <button><Link to='/'>Home</Link></button>
+            <Topics topics={this.state.topics}  />
+            <Sort />
+            <Search articles={this.state.articles} />
+            {/* <button onClick= { this.handleLoginClick } value={this.state.user._id? 'Log Out' : 'Login'} >  */}
+                  <Link to= {this.state.user._id? '/logout' : '/login' } > {this.state.user._id? 'Log Out' : 'Login'} </Link> 
+            {/* </button> */}
+
         </nav>
         
         { this.state.user._id && <LeftSection user_id= {this.state.user._id} /> } 
@@ -87,6 +91,8 @@ class App extends Component {
 
           < HandlingErrors path='/errors' />
 
+          <LogOut path='/logout' setUser={this.setUser} />
+
         </Router>
 
       </div>
@@ -108,7 +114,7 @@ class App extends Component {
       
         .catch(err => {
               navigate('/errors')
-        }) //add error handler
+        }) 
   }
 
   filterByUser = (articles) => {
