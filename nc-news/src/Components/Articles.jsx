@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import gear from '../Assets/Gear-1s-200px.gif';
-import Article from './Article';
-import { navigate } from '@reach/router/lib/history';
+import ArticleBar from './ArticleBar';
+import { navigate, Link} from '@reach/router';
 
 class Articles extends Component {
 
@@ -22,10 +22,32 @@ class Articles extends Component {
         return (
             
             <div>
-                {articles.map((article) => 
+                {articles.map((article) => <div key = {article._id} className='article' >
+                    <h1> <Link to={`/article/${article._id}`}> {article.title}  </Link> </h1> <br/>
+                    <p>{article.body.slice(0, 50)}...</p> <br/>
+                    <h3>{article.created_by.name } </h3>
+                    <h2>{article.created_at.slice(0, 10)}</h2>
+
+                    <div className = 'article-bar'>
+                        <label> 
+                                <span>&#8882; </span> 
+                                {article.comment_count}  Comments
+                                 {/* <Link className='goto-comments' to={`/article/${article._id}`} > Comments </Link>  */}
+                                <span>&#8883; </span>
+                            
+                        </label> 
+
+                        <label> 
+                            <span>&#8882; </span> 
+                            { article.votes }  Votes <span>&#8883; </span>  
+                        </label>
+
+                    </div>    
+                        
+                        
+                </div>
                     
-                      <Article article={article}/>
-                    
+                   
                 )} 
 
 
@@ -37,18 +59,18 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        if (!this.state.articles.length )
-        
-        api.getArticles()
-        .then((articles) => {
+      if (!this.state.articles.length) {
+            api.getArticles()
+            .then((articles) => {
 
-        this.setState({
-            loading: false,
-            articles})
-        })
-        .catch(err => {
-             navigate('/')
-        }) //add error handler
+            this.setState({
+                loading: false,
+                articles})
+            })
+            .catch(err => {
+                console.log(err)
+            }) //add error handler
+        }    
     }
 
     componentDidUpdate(prevProps, prevState) {

@@ -23,6 +23,7 @@ import ProfileStrength from './Components/ProfileStrength';
 
 
 
+
 class App extends Component {
   state = {
     articles: [],
@@ -77,7 +78,7 @@ class App extends Component {
 
           <AddComment path='/article/comment' />
 
-          <Comments path='/article/:id/comments' />
+          {/* <Comments path='/article/:id/comments' /> */}
 
           <NotFound default />
           <RegisterUser path='/register' />
@@ -89,6 +90,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    if (localStorage.user) {
+      
+      this.setUser(JSON.parse(localStorage.user))
+    }
     
     if(!this.state.topics.length ) api.getTopics()
       .then((topics) => {

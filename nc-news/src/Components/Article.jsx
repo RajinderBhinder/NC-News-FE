@@ -1,41 +1,44 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import Comments from './Comments';
-
+import { Alert } from 'reactstrap';
 import {Link} from '@reach/router';
+import gear from '../Assets/Gear-1s-200px.gif';
 
 class Article extends Component {
     state = {
         article: {},
         modifier: 0,
         voted: false,
+        loading: true
     }
 
 
     render() {
-        const article = this.props.article || this.state.article;
+
+        
+        if (this.state.loading) return <> <br/> <br/> <img src={gear} alt='loading'/> </>
+        const {article} = this.state;
+
+        
         
         return (
             <div>
-                <article className='article' >
-                    <h1> <Link to={`/article/${article._id}`}   > 
-                    {article.title} </Link> </h1>
+                <div className='article' >
+                    <h1>  {article.title}  </h1>
+
                     <p >{article.body}</p>
-                   {!this.props.article_id &&   <h3>
-                          {article.created_by.name } </h3> }
-                   { !this.props.article_id && <h2>{article.created_at.slice(0, 10)}</h2> }
+
+                     {/* <h3>{article.created_by } </h3> */}
+
+                    {/* <h2>{article.created_at.slice(0, 10)}</h2> */}
                     
-                </article>
+                </div>
 
 
                 <div className = 'article-bar'>
-                {this.props.article && <label> 
-                        <span>&#8882; </span> 
-                           {article.comment_count} 
-                        <Link className='goto-comments' to={`/article/${article._id}`} > Comments </Link>
-                        <span>&#8883; </span>
-                        {/* &#8942; &#8942; &#8942; */}
-                </label> }
+                
+
 
                    <label> <span>&#8882; </span> { article.votes =  article.votes + this.state.modifier  }  Votes <span>&#8883; </span>  </label>
                     
@@ -45,7 +48,7 @@ class Article extends Component {
                 </div>    
 
                 
-        {!this.props.article  &&   <Comments id={this.props.article_id} user={this.props.user} /> }
+           <Comments id={article._id} user={this.props.user} /> 
 
             </div>
                 
@@ -53,14 +56,18 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.article) {
+
         
             api.getArticleById(this.props.article_id)
                 .then((article) => {
-                    this.setState({article})
+                    this.setState({
+                        loading: false,
+                        article})
                 })
-                .catch(console.log)
-        }   
+                .catch((err) => {
+                   console.log(err)
+                })
+           
     }
     
 
@@ -77,6 +84,13 @@ class Article extends Component {
             
     
           })
+    }
+
+    handleArticleClick = (event) => {
+        
+        this.setState({
+            displayComments: true
+        })
     }
 
 }

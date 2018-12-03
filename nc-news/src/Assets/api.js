@@ -50,7 +50,7 @@ export const getTopics = async () => {
  }
 
  export const addArticle = async (newArticle, topic) => {
-
+     
      const {data} = await axios.post(`${baseURL}/topics/${topic}/articles`, newArticle)
      return data.article;
  }

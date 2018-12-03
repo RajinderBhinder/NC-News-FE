@@ -22,7 +22,7 @@ class Draft extends Component {
         return (
             <main className='draft'>
                 <h1> <br/> {localStorage.getItem('title')} <br/></h1>
-                <h2><br/> For:  '{localStorage.getItem('topic')}'</h2>
+                <h2><br/> Topic:  '{localStorage.getItem('topic')}'</h2>
                 <h2> <br/> Body: <br/> </h2>
                 <p>  <br/> {localStorage.getItem('body')}</p>
 
@@ -49,7 +49,7 @@ class Draft extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { title, body, created_by, topic } = localStorage;
-        console.log(title)
+        
         if (title.length === 0) {
             this.setState({
                 noInputFor: 'title'
