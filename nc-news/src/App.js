@@ -22,6 +22,11 @@ import ProfileStrength from './Components/ProfileStrength';
 import HandlingErrors from './Components/HandlingErrors'
 import { navigate } from '@reach/router';
 import LogOut from './Components/LogOut';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faHome)
 
 
 
@@ -43,7 +48,7 @@ class App extends Component {
         <Header user={this.state.user} />
         <nav>
         
-            <button><Link to='/'>Home</Link></button>
+           <Link to='/'>  <FontAwesomeIcon icon="home" size={70}/> </Link>
             <Topics topics={this.state.topics}  />
             <Sort />
             <Search articles={this.state.articles} />

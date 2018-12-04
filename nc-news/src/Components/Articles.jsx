@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as api from '../Assets/api';
 import gear from '../Assets/Gear-1s-200px.gif';
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 
 import { navigate, Link} from '@reach/router';
 
@@ -20,8 +21,24 @@ class Articles extends Component {
 
         
         return (
-            
             <div>
+                <InputGroup>
+        <Input placeholder="username" />
+        <InputGroupAddon addonType="append">search</InputGroupAddon>
+      </InputGroup>
+      <br />
+
+
+            <div>
+            
+            
+                
+                <InputGroup>
+        <InputGroupAddon addonType="prepend">$</InputGroupAddon>
+        <Input placeholder="Amount" type="number" step="1" />
+        <InputGroupAddon addonType="append">.00</InputGroupAddon>
+      </InputGroup>
+
                 {articles.map((article) => <div key = {article._id} className='article' >
                     <h1> <Link to={`/article/${article._id}`}> {article.title}  </Link> </h1> <br/>
                     <p>{article.body.slice(0, 50)}...</p> <br/>
@@ -50,6 +67,8 @@ class Articles extends Component {
                    
                 )} 
 
+
+            </div>
 
             </div>
                 
@@ -151,8 +170,12 @@ class Articles extends Component {
    fetchArticles = () => {
        
    }
-    
+ 
+   
+   
 }
+
+
 
 
 export default Articles;
