@@ -1,8 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import gear from '../Assets/Gear-1s-200px.gif';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-
 import { navigate, Link} from '@reach/router';
 
 class Articles extends Component {
@@ -90,20 +88,19 @@ class Articles extends Component {
 
         
         if (prevProps.sortTopic !== this.props.sortTopic) {
-            
 
             let sortedArticles;
+
             if (this.props.sortTopic === 'byUser') {
             
                 sortedArticles =  this.state.articles.reduce((acc,article) => {
-                   
-                    if(article.created_by._id === this.props.user._id ) {
+                  
+                    if(article.created_by._id === localStorage.user._id ) {
                         acc.push(article)
                     }
                     return acc;
                 },[])
 
-                return sortedArticles;
 
             } else if ( this.props.sortTopic === 'latest') {
 
@@ -111,7 +108,7 @@ class Articles extends Component {
                     return +new Date(b.created_at) - +new Date(a.created_at)
                     })
 
-                return sortedArticles
+                
             } else if (this.props.sortTopic === 'popularity') {
 
                 sortedArticles = this.state.articles.sort((a, b) => {

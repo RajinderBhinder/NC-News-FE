@@ -34,7 +34,7 @@ class Draft extends Component {
                 }
 
 
-                <button onClick={this.handleSubmit}>Post</button>
+                <button className='logout-button' onClick={this.handleSubmit}>Post</button>
 
                 { this.state.err &&
                     <Alert >

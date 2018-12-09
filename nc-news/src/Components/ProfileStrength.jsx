@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from '@reach/router';
 import * as api from '../Assets/api';
 import {Pie} from 'react-chartjs-2';
 

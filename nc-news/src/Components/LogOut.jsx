@@ -15,10 +15,15 @@ class  LogOut extends Component {
 
                     <br/> <br/>
 
-                    <h2>Please click <button onClick={this.handleLogoutClick}>here</button>to confirm you want to Log Out <br/>
+                    <h2>Please click <button className='logout-button' onClick={this.handleLogoutClick}>here</button>to confirm you want to Log Out <br/>
                     <br/> <br/>
                         Or click <Link to='/'> Home </Link> to continue browsing 
-                    </h2>
+                    </h2> <br/>
+
+                     {!localStorage.getItem('user') && 
+                    <h2 className='logged-out'>Successfully logged out!
+                        
+                    </h2>}
             </main>
         );
 

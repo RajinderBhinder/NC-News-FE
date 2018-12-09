@@ -23,7 +23,7 @@ class User extends Component {
                 <CardTitle className='card-title'>Username: {user.username }</CardTitle>
                 <CardSubtitle>Name: {user.name }</CardSubtitle>
             </CardBody>
-            <img width="70%" src={`${user.avatar_url}`} alt="User image" />
+            <img width="70%" src={`${user.avatar_url}`} alt="User profile" />
             
             </Card>
             </main>

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
 
 const Sort = () => {
@@ -18,8 +18,5 @@ const Sort = () => {
     );
 };
 
-Sort.propTypes = {
-    
-};
 
 export default Sort;

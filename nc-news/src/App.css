@@ -318,6 +318,15 @@ main {
   background-image: url('./Assets/oops.jpg');
 }
 
+.error-404 {
+  margin-left: 100px;
+  align-self: center;
+  width: 800px;
+  height: 600px;
+  background-image: url('./Assets/error_404_http_code.jpg');
+  background-repeat: no-repeat;
+}
+
 
 /*        ---------------------------------------------------
 -------------------------------- Loading -------------------------------------
@@ -717,3 +726,25 @@ button:hover {
   padding: 10px;
   border: 3px solid white;
 }
+
+.logout-button {
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0; 
+  height: 30px;
+  width: 100px;
+  background-color: #96858f;
+  border-radius: 20px;
+  font-size: 15px;
+  border: 1px solid #6d7993;
+  box-shadow: 2px 2px 5px #6d7993;
+  
+}
+
+.logged-out {
+  color: darkgreen;
+}
+
+
+

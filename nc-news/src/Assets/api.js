@@ -9,23 +9,7 @@ export const getTopics = async () => {
  }
 
 
- export const getData = async () => {
-     
-    return  axios.get(`${baseURL}/articles`)
-    .then(({data: {articles}}) => {
-
-        const commentsArray = Promise.all(articles.map(eachArticle => {
-
-            axios.get(`${baseURL}/articles/${eachArticle._id}/comments`)
-
-        }))
-                           
-
-        return Promise.all([articles, commentsArray])
-
-    })
-    
- }
+ 
 
  export const getArticles = async (topic) => {
      const url = topic? `${baseURL}/topics/${topic}/articles` : `${baseURL}/articles`;

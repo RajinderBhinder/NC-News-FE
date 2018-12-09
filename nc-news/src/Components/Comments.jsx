@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import  AddComment from './AddComment';
 import Comment from './Comment';
-import {Alert} from 'reactstrap';
 
 class Comments extends Component {
     state = {
@@ -39,7 +38,7 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-        console.log('here')
+        
         api.getComments(this.props.id) 
            .then(comments => {
                this.setState({comments})

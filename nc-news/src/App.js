@@ -13,9 +13,7 @@ import Header from './Components/Header';
 import LeftSection from './Components/LeftSection';
 import AddArticle from './Components/AddArticle';
 import AddComment from './Components/AddComment';
-import Comments from './Components/Comments';
 import NotFound from './Components/NotFound';
-import Search from './Components/Search';
 import RegisterUser from './Components/RegisterUser';
 import Draft from './Components/Draft';
 import ProfileStrength from './Components/ProfileStrength';
@@ -30,8 +28,6 @@ library.add(faHome)
 
 
 
-
-
 class App extends Component {
   state = {
     articles: [],
@@ -39,22 +35,26 @@ class App extends Component {
     user: {},
     userArticles: []
   }
+
   render() {
 
-    
     return (
       <div className="App">
         
         <Header user={this.state.user} />
         <nav>
         
-           <Link to='/'>  <FontAwesomeIcon icon="home" size={"2x"}/> </Link>
+            <Link  to='/'>  <button><FontAwesomeIcon icon="home" size={"2x"}/></button> </Link>
+
             <Topics topics={this.state.topics}  />
+
             <Sort />
-            <Search articles={this.state.articles} />
-            {/* <button onClick= { this.handleLoginClick } value={this.state.user._id? 'Log Out' : 'Login'} >  */}
-                  <Link to= {this.state.user._id? '/logout' : '/login' } > {this.state.user._id? 'Log Out' : 'Login'} </Link> 
-            {/* </button> */}
+           
+            <button >  
+                  <Link className='login' to= {this.state.user._id? '/logout' : '/login' } >
+                    {this.state.user._id? 'Log Out' : 'Login'}
+                  </Link> 
+            </button> 
 
         </nav>
         
@@ -93,7 +93,7 @@ class App extends Component {
           <NotFound default />
           <RegisterUser path='/register' />
 
-          {/* < HandlingErrors path='/errors' /> */}
+          < HandlingErrors path='/errors' />
 
           <LogOut path='/logout' setUser={this.setUser} />
 
@@ -121,13 +121,7 @@ class App extends Component {
         }) 
   }
 
-  filterByUser = (articles) => {
-   return articles.reduce((acc,article) => {
-      if(article.created_by._id === this.props.user_id ) 
-         acc.push(article)
-         return acc;
-    },[])
-  }
+  
 
   setUser = (user) => {
     this.setState({user})

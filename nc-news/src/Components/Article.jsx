@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../Assets/api';
 import Comments from './Comments';
-import { Alert } from 'reactstrap';
-import {Link} from '@reach/router';
+import { navigate} from '@reach/router';
 import gear from '../Assets/Gear-1s-200px.gif';
 
 class Article extends Component {
@@ -62,7 +61,7 @@ class Article extends Component {
                         article})
                 })
                 .catch((err) => {
-                   console.log(err)
+                    navigate('/errors')
                 })
            
     }
