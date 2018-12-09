@@ -13,16 +13,16 @@ class Articles extends Component {
 
     render() {
 
-        let articles;
+        // let articles;
 
-        if (this.props.sortTopic) {
-            articles = this.state.sortedArticles;
-        } else {
-            articles = this.state.articles
-        }
+        // if (this.props.sortTopic) {
+        //     articles = this.state.sortedArticles;
+        // } else {
+        //     articles = this.state.articles
+        // }
    
         
-        //const {articles} = this.state
+        const {articles} = this.state
         
         if (this.state.loading) return <> <br/> <br/> <img src={gear} alt='loading'/> </>
 
@@ -92,10 +92,11 @@ class Articles extends Component {
             let sortedArticles;
 
             if (this.props.sortTopic === 'byUser') {
+                console.log(JSON.parse(localStorage.user)._id, JSON.parse(localStorage.user).username, '<<<<<<')
             
                 sortedArticles =  this.state.articles.reduce((acc,article) => {
                   
-                    if(article.created_by._id === localStorage.user._id ) {
+                    if(article.created_by._id === JSON.parse(localStorage.user)._id ) {
                         acc.push(article)
                     }
                     return acc;
