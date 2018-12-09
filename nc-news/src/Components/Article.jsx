@@ -25,12 +25,9 @@ class Article extends Component {
         return (
             <div>
                 <div className='article' >
+                
                     <h1>  {article.title}  </h1>
-
                     <p >{article.body}</p>
-
-                     <h3>{article.created_by } </h3>
-
                     <h2>{article.created_at.slice(0, 10)}</h2>
                     
                 </div>

@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Card, CardBody,
     CardTitle, CardSubtitle } from 'reactstrap';
+import * as api from '../Assets/api'
 
 class User extends Component {
+
+    state = {
+        user: {}
+    }
     render() {
         
         // const {user} = this.props.location.state;
 
-        const {user} = this.props;
+        const {user} = this.state;
         
         return (
             
@@ -23,6 +28,13 @@ class User extends Component {
             </Card>
             </main>
         );
+    }
+
+    componentDidMount() {
+        api.getUser(this.props.username)
+        .then((user) => {
+            this.setState({user})
+        })
     }
 }
 

@@ -9,40 +9,34 @@ class Articles extends Component {
 
     state = {
         articles: [],
+        sortedArticles: [],
         loading: true,
     }
 
     render() {
+
+        let articles;
+
+        if (this.props.sortTopic) {
+            articles = this.state.sortedArticles;
+        } else {
+            articles = this.state.articles
+        }
    
         
-        const {articles} = this.state
+        //const {articles} = this.state
         
         if (this.state.loading) return <> <br/> <br/> <img src={gear} alt='loading'/> </>
 
         
         return (
             <div>
-                <InputGroup>
-        <Input placeholder="username" />
-        <InputGroupAddon addonType="append">search</InputGroupAddon>
-      </InputGroup>
-      <br />
-
-
-            <div>
-            
-            
                 
-                <InputGroup>
-        <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-        <Input placeholder="Amount" type="number" step="1" />
-        <InputGroupAddon addonType="append">.00</InputGroupAddon>
-      </InputGroup>
 
                 {articles.map((article) => <div key = {article._id} className='article' >
                     <h1> <Link to={`/article/${article._id}`}> {article.title}  </Link> </h1> <br/>
                     <p>{article.body.slice(0, 50)}...</p> <br/>
-                    <h3>{article.created_by.name } </h3>
+                    <Link to={ `/users/${article.created_by.username}` }> <h3>{article.created_by.name } </h3> </Link>
                     <h2>{article.created_at.slice(0, 10)}</h2>
 
                     <div className = 'article-bar'>
@@ -70,7 +64,7 @@ class Articles extends Component {
 
             </div>
 
-            </div>
+            
                 
         );
 
@@ -94,9 +88,9 @@ class Articles extends Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        console.log(this.props.sortTopic)
-
+        
         if (prevProps.sortTopic !== this.props.sortTopic) {
+            
 
             let sortedArticles;
             if (this.props.sortTopic === 'byUser') {
@@ -109,12 +103,7 @@ class Articles extends Component {
                     return acc;
                 },[])
 
-                
-
-                this.setState({
-                    articles: sortedArticles
-                })
-
+                return sortedArticles;
 
             } else if ( this.props.sortTopic === 'latest') {
 
@@ -137,40 +126,25 @@ class Articles extends Component {
             }
 
             this.setState({
-                articles: sortedArticles
-            })
-
-           
-        } else if ( this.props.sortTopic === 'undefined' ) {
-            api.getArticles()
-            .then((articles) => {
-
-            this.setState({
-                loading: false,
-                articles})
-            })
-            .catch(err => {
-                navigate('/errors')
+               sortedArticles
             }) 
-           
-        }
+
+        } 
         
-        else {
         
-        if ((prevProps.topic !== this.props.topic) )
+        if ((prevProps.topic !== this.props.topic) ) {
             api.getArticles(this.props.topic)
                 .then((articles) => {
 
                    this.setState({articles})
                 })
-                .catch(console.log) //add error handler
-            }
+                .catch(err => {
+                    navigate('/errors')
+              }) 
+
+        } 
+            
     }
-    
-   fetchArticles = () => {
-       
-   }
- 
    
    
 }

@@ -48,7 +48,7 @@ class App extends Component {
         <Header user={this.state.user} />
         <nav>
         
-           <Link to='/'>  <FontAwesomeIcon icon="home" size={70}/> </Link>
+           <Link to='/'>  <FontAwesomeIcon icon="home" size={"2x"}/> </Link>
             <Topics topics={this.state.topics}  />
             <Sort />
             <Search articles={this.state.articles} />
@@ -80,8 +80,7 @@ class App extends Component {
           
           <Login path='/login' setUser={this.setUser} />
 
-          <User path='users/:username' user={this.state.user} />
-          {/* <User path='users/:username'  /> */}
+          <User path='users/:username'  />
 
           <AddArticle path='/addArticle' topics={this.state.topics} user={this.state.user} />
           <Draft path='/articles_draft' />
@@ -94,7 +93,7 @@ class App extends Component {
           <NotFound default />
           <RegisterUser path='/register' />
 
-          < HandlingErrors path='/errors' />
+          {/* < HandlingErrors path='/errors' /> */}
 
           <LogOut path='/logout' setUser={this.setUser} />
 
