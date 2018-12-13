@@ -30,10 +30,9 @@ library.add(faHome)
 
 class App extends Component {
   state = {
-    articles: [],
+
     topics: [],
-    user: {},
-    userArticles: []
+    user: {}
   }
 
   render() {

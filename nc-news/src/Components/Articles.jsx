@@ -7,7 +7,6 @@ class Articles extends Component {
 
     state = {
         articles: [],
-        sortedArticles: [],
         loading: true,
     }
 
@@ -86,15 +85,16 @@ class Articles extends Component {
 
     componentDidUpdate(prevProps, prevState) {
 
+        if (this.props.sortTopic) {
+
         
         if (prevProps.sortTopic !== this.props.sortTopic) {
 
-            let sortedArticles;
+            let articles;
 
             if (this.props.sortTopic === 'byUser') {
-                console.log(JSON.parse(localStorage.user)._id, JSON.parse(localStorage.user).username, '<<<<<<')
             
-                sortedArticles =  this.state.articles.reduce((acc,article) => {
+                articles =  [...this.state.articles].reduce((acc,article) => {
                   
                     if(article.created_by._id === JSON.parse(localStorage.user)._id ) {
                         acc.push(article)
@@ -105,29 +105,30 @@ class Articles extends Component {
 
             } else if ( this.props.sortTopic === 'latest') {
 
-                sortedArticles =  this.state.articles.sort((a, b) => {
+                articles =  [...this.state.articles].sort((a, b) => {
                     return +new Date(b.created_at) - +new Date(a.created_at)
                     })
 
                 
             } else if (this.props.sortTopic === 'popularity') {
 
-                sortedArticles = this.state.articles.sort((a, b) => {
+                articles = [...this.state.articles].sort((a, b) => {
                     return b.comment_count - a.comment_count
                 })
 
             } else if (this.props.sortTopic === 'rating') {
 
-                sortedArticles = this.state.articles.sort((a, b) => {
+                articles = [...this.state.articles].sort((a, b) => {
                     return b.votes - a.votes
                 })
             }
 
             this.setState({
-               sortedArticles
+               articles
             }) 
 
         } 
+    } 
         
         
         if ((prevProps.topic !== this.props.topic) ) {
