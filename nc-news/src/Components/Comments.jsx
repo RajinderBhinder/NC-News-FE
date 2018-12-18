@@ -58,8 +58,9 @@ class Comments extends Component {
     } 
 
     removeDeletedComment = (comment_id) => {
+        const filteredComments = this.state.comments.filter(comment => comment._id !== comment_id);
         this.setState({
-            comments : this.state.comments.filter(comment => comment._id !== comment_id)
+            comments : filteredComments
         })
     }
     
