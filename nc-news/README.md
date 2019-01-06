@@ -8,7 +8,7 @@ This repository serves the front-end for Northcoders news - a news aggregate web
 
 ## Getting Started
 
-###Prerequisites
+### Prerequisites
 
 - Node.js
 - React
