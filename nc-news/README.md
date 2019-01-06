@@ -4,7 +4,7 @@ This repository serves the front-end for Northcoders news - a news aggregate web
 
  This Front End uses Axios to make requests and relies on a Back-End API, which can be found [here](https://rajinder-presenting-nc-news.herokuapp.com/api/) on Heroku.
 
- A live deployment of the frontend can be accessed [here]
+ A live deployment of the frontend can be accessed [here](https://northcoders-news-front-end.netlify.com/)
 
 ## Getting Started
 
